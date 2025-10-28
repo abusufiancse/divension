@@ -4,8 +4,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/controllers/theme_controller.dart';
 import 'core/routes/app_routes.dart';
+import 'core/routes/route_name.dart';
 import 'core/theme/app_theme.dart';
-import 'features/home/home_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,10 +37,8 @@ class DiventionApp extends StatelessWidget {
           theme: AppTheme.light,
           darkTheme: AppTheme.dark,
           themeMode: themeC.themeMode.value,
-          initialRoute: AppRoutes.home,
-          getPages: [
-            GetPage(name: AppRoutes.home, page: () => const HomeView()),
-          ],
+          initialRoute: RouteName.splashScreen,
+          getPages: AppRoutes.appRoutes(),
         ),
       ),
     );
