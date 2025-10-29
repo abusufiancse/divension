@@ -10,6 +10,7 @@ import '../../widgets/bottom_nav.dart';
 import '../../widgets/deshboard_header/CosmicZoomHeader.dart';
 import '../../widgets/deshboard_header/CosmicZoomHeader2.dart';
 import '../../widgets/deshboard_header/DNAScienceHeader.dart';
+import '../../widgets/deshboard_header/HistoryTimelineHeader.dart';
 import '../../widgets/deshboard_header/PlanetaryLandingHeader.dart';
 import '../../widgets/deshboard_header/SpaceLaunchHeader.dart';
 import '../../widgets/drawer_widget.dart';
@@ -31,7 +32,6 @@ class HomeScreen extends StatelessWidget {
 
     // ---- Mock data (replace with API) ----
     final memories = [
-      'https://images.unsplash.com/photo-1532635223-4781b327wire?q=80&w=1200&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit:crop',
       'https://images.unsplash.com/photo-1523978591478-c753949ff840?q=80&w=1200&auto=format&fit:crop',
       'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit:crop',
@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                 // background: DNAScienceHeader(),
                 //  background: SpaceLaunchHeader(),
                 //  background: PlanetaryLandingHeader(),// 2
-                 background: CosmicZoomHeaderTwo(),// 2
+                 background: HistoryTimelineHeader(),// 2
               ),
             ),
 
@@ -261,7 +261,7 @@ class HomeScreen extends StatelessWidget {
                 final rowCount = (items.length / cols).ceil();
 
                 return SliverPadding(
-                  padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 24.h),
+                  padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 24.h),
                   sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
                           (context, rowIndex) {
