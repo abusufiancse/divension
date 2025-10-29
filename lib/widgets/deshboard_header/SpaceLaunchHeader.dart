@@ -2,6 +2,7 @@
 import 'dart:math' as math;
 import 'dart:ui' show lerpDouble;
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// Use inside SliverAppBar → FlexibleSpaceBar(background: SpaceLaunchHeader())
 class SpaceLaunchHeader extends StatefulWidget {
@@ -96,7 +97,10 @@ class _SpaceLaunchHeaderState extends State<SpaceLaunchHeader>
 
           final double skyBlend = _skyMix.value.clamp(0.0, 1.0).toDouble();
           final double thrust = _thrust.value.clamp(0.0, 1.0).toDouble();
-          final double topY = (h * _rocketY.value);
+          // --- Give a little extra space below the rocket so it doesn't start too low ---
+          final double bottomExtraSpace = 0.08; // 8% of header height as bottom padding
+          final double topY = h * (_rocketY.value - bottomExtraSpace).clamp(0.0, 1.0);
+
 
           return Stack(
             fit: StackFit.expand,
@@ -185,14 +189,16 @@ class _SpaceLaunchHeaderState extends State<SpaceLaunchHeader>
               ),
 
               // -------- Center Title --------
-              Positioned.fill(
+              Positioned(
+                right: 16,
+                top: 45.h,
                 child: IgnorePointer(
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Welcome to Divention Science Club',
+                          'Rocket Lunching',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             color: Colors.white,
@@ -212,27 +218,29 @@ class _SpaceLaunchHeaderState extends State<SpaceLaunchHeader>
 
               // -------- Animated Material Badges near bottom (usable) --------
               Positioned(
-                left: 0,
-                right: 0,
-                bottom: 56, // bottom theke ektu opor
+                right: 50.w,
+                bottom: 15.h, // bottom theke ektu opor
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     _BadgeWrapper(
                       tooltip: 'Chemistry',
-                      onTap: () => Navigator.pushNamed(context, '/chemistry'),
+                      onTap: () => (){},
+                      // onTap: () => Navigator.pushNamed(context, '/chemistry'),
                       child: ChemistryBadge(t: _ctrl.value, cs: cs),
                     ),
                     const SizedBox(width: 12),
                     _BadgeWrapper(
                       tooltip: 'Physics',
-                      onTap: () => Navigator.pushNamed(context, '/physics'),
+                      onTap: () => (){},
+                      // onTap: () => Navigator.pushNamed(context, '/physics'),
                       child: PhysicsBadge(t: _ctrl.value, cs: cs),
                     ),
                     const SizedBox(width: 12),
                     _BadgeWrapper(
                       tooltip: 'Research News',
-                      onTap: () => Navigator.pushNamed(context, '/news'),
+                      onTap: () => (){},
+                      // onTap: () => Navigator.pushNamed(context, '/news'),
                       child: NewsBadge(t: _ctrl.value, cs: cs),
                     ),
                   ],
@@ -266,7 +274,7 @@ class _BadgeWrapper extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           onTap: onTap,
           child: Container(
-            width: 94,
+            width: 84,
             height: 62,
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
@@ -754,7 +762,7 @@ class _RocketAssembly extends StatelessWidget {
       children: [
         // exhaust trail (ground only)
         Positioned(
-          top: 64,
+          top: 64.h,
           child: Opacity(
             opacity: (1 - skyMix * 0.85).clamp(0.0, 1.0),
             child: _ExhaustTrail(length: 170 + 90 * thrust),

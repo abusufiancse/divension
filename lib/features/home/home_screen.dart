@@ -2,21 +2,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import '../../core/controllers/theme_controller.dart';
 // Other necessary imports
 import '../../core/theme/app_text_styles.dart';
-import '../../core/theme/app_theme.dart';
-import '../../widgets/DNAScienceHeader.dart';
-import '../../widgets/app_bar_animation.dart';
-import '../../widgets/astro_header.dart';
-import '../../widgets/banner_carousel.dart';
 import '../../widgets/bottom_nav.dart';
+import '../../widgets/deshboard_header/CosmicZoomHeader.dart';
+import '../../widgets/deshboard_header/CosmicZoomHeader2.dart';
+import '../../widgets/deshboard_header/DNAScienceHeader.dart';
+import '../../widgets/deshboard_header/PlanetaryLandingHeader.dart';
+import '../../widgets/deshboard_header/SpaceLaunchHeader.dart';
 import '../../widgets/drawer_widget.dart';
+import '../../widgets/glass_card.dart';
 import '../../widgets/section_header.dart';
 import '../../widgets/stat_chip.dart';
-import '../../widgets/glass_card.dart';
-import '../activities/activities_view.dart';
-import '../blog/blog_view.dart';
 import '../blogs_screen.dart';
 import '../books/books_view.dart';
 import '../member_activity_gallery_screen.dart';
@@ -71,23 +70,42 @@ class HomeScreen extends StatelessWidget {
           slivers: [
             // ---------- Hero Banner ----------
             SliverAppBar(
+              // Core Behavior
               pinned: true,
               expandedHeight: 280.h,
               backgroundColor: Theme.of(context).cardColor,
-              title: Text(
-                'Divention Science Club',
-                style: AppTextStyles.h2(context), // <--- Use AppTextStyles.h2
+
+              // CRITICAL: Set title here, wrapped in the custom logic
+              title: CollapsedContentVisibility(
+                child: Text(
+                  'Divention Science Club',
+                  style: AppTextStyles.h2(context),
+                ),
               ),
+
+              // CRITICAL: Set actions here, wrapped in the custom logic
               actions: [
-                IconButton(
-                  onPressed: () => Navigator.pushNamed(context, '/login'),
-                  icon: const Icon(Icons.login_rounded),
+                CollapsedContentVisibility(
+                  child: IconButton(
+                    onPressed: () => Navigator.pushNamed(context, '/login'),
+                    icon: const Icon(Icons.login_rounded),
+                  ),
                 ),
               ],
+
+              // Ensure leading icon is hidden when expanded (usually this is automatic if title/actions are hidden)
+              // You might need to adjust the color of the icons depending on your background.
+              // automaticallyImplyLeading: true, // Keep this default if you want a back button
+
               flexibleSpace: FlexibleSpaceBar(
-                background:
-                // Image.asset('assets/memories/2.jpg',),
-                DNAScienceHeader(),
+                // IMPORTANT: Set FlexibleSpaceBar.title to null
+                title: null,
+                // background: CosmicZoomHeader(),
+                // background: PlanetaryLandingHeader(),
+                // background: DNAScienceHeader(),
+                //  background: SpaceLaunchHeader(),
+                //  background: PlanetaryLandingHeader(),// 2
+                 background: CosmicZoomHeaderTwo(),// 2
               ),
             ),
 
@@ -569,6 +587,33 @@ class _ShimmerPlaceholderState extends State<_ShimmerPlaceholder>
           ),
         );
       },
+    );
+  }
+}
+
+//? Sliver Appbar code
+// Custom Widget to control visibility based on collapse state
+class CollapsedContentVisibility extends StatelessWidget {
+  const CollapsedContentVisibility({
+    required this.child,
+    super.key,
+  });
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    // Access the current collapse settings of the FlexibleSpaceBar
+    final settings = context.dependOnInheritedWidgetOfExactType<FlexibleSpaceBarSettings>();
+
+    // Check if the current extent is equal to the minimum extent (i.e., fully collapsed)
+    final isCollapsed = settings != null && settings.currentExtent <= settings.minExtent;
+
+    // Use an AnimatedOpacity for a smooth transition
+    return AnimatedOpacity(
+      opacity: isCollapsed ? 1.0 : 0.0,
+      duration: const Duration(milliseconds: 200),
+      child: child,
     );
   }
 }
