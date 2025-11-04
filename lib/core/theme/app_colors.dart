@@ -10,7 +10,7 @@ class AppColors {
 
 
 // Surfaces
-  static const bgLight = Color(0xFFF9FAFB);
+  static const bgLight = Color(0xFFF6F7F9);
   static const bgDark = Color(0xFF0F1115);
   static const cardLight = Colors.white;
   static const cardDark = Color(0xFF161A20);

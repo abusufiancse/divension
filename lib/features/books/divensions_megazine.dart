@@ -120,10 +120,8 @@ class _DivensionMagazineState extends State<DivensionMagazine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F7F9),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
         title: Text(
           'Divension Megazine',
           style: AppTextStyles.h2(context),
@@ -137,7 +135,7 @@ class _DivensionMagazineState extends State<DivensionMagazine> {
             // Search bar
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(12.r),
                 boxShadow: [
                   BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 2)),
@@ -175,9 +173,9 @@ class _DivensionMagazineState extends State<DivensionMagazine> {
                       });
                     },
                     selectedColor: Colors.black,
-                    backgroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).cardColor,
                     labelStyle: TextStyle(
-                      color: selected ? Colors.white : Colors.black87,
+                      color: selected ? Colors.white : Colors.grey,
                       fontWeight: FontWeight.w600,
                     ),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
@@ -236,7 +234,7 @@ class _DivensionMagazineState extends State<DivensionMagazine> {
             if (issues.isEmpty)
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20.h),
-                child: Center(child: Text('No editions for $year', style: TextStyle(color: Colors.black54))),
+                child: Center(child: Text('No editions for $year', style: AppTextStyles.h1(context)))
               )
             else
               SizedBox(
@@ -287,7 +285,7 @@ class _DivensionMagazineState extends State<DivensionMagazine> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('$year Editions', style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700, color: Colors.black87)),
+              Text('$year Editions', style: AppTextStyles.h3(context)),
               TextButton.icon(
                 onPressed: () => setState(() => _selectedYear = null),
                 icon: Icon(Icons.arrow_back, size: 16.sp),

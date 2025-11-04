@@ -20,7 +20,8 @@ import '../../widgets/responsive_book_widget.dart';
 import '../../widgets/section_header.dart';
 import '../../widgets/stat_chip.dart';
 import '../blogs_screen.dart';
-import '../books/divensions_megazine.dart';
+import '../books/divensions_megazine.dart' hide BookWidget;
+import '../events/event_screen.dart';
 import '../member_activity_gallery_screen.dart';
 import 'home_controller.dart';
 
@@ -316,7 +317,7 @@ class HomeScreen extends StatelessWidget {
       ),
       // ✅ Other tabs
       const DivensionMagazine(),
-      const MemberActivityGalleryScreen(),
+      const EventsScreen(),
       const BlogsScreen(),
     ];
     return Obx(() => Scaffold(
