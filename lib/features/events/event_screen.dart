@@ -167,7 +167,7 @@ class _EventsScreenState extends State<EventsScreen> {
                         // Upcoming
                         _SectionHeader(title: 'Upcoming Events', actionLabel: 'See all', onAction: () {/* navigate to all upcoming */}),
                         SizedBox(
-                          height: 300.h,
+                          height: 315.h,
                           child: upcoming.isEmpty
                               ? Center(child: Text('No upcoming events', style: AppTextStyles.body(ctx)))
                               : ListView.separated(
@@ -181,7 +181,9 @@ class _EventsScreenState extends State<EventsScreen> {
                               final expanded = _expanded[e.id] ?? false;
                               return Container(
                                 width: 320.w,
-                                decoration: BoxDecoration(  color:  theme.cardColor,),
+                                decoration: BoxDecoration(color: theme.cardColor,
+                                borderRadius: BorderRadius.circular(16)
+                                ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -232,13 +234,19 @@ class _EventsScreenState extends State<EventsScreen> {
                                                   icon: Icon(_interested[e.id] ?? false ? Icons.bookmark : Icons.bookmark_outline),
                                                 ),
                                                 SizedBox(width: 8.w),
-                                                ElevatedButton(
-                                                  onPressed: _registered[e.id] == true ? null : () => _onRegister(e.id),
-                                                  child: Text(_registered[e.id] == true ? 'Registered' : 'Register'),
+                                                InkWell(
+                                                  onTap: _registered[e.id] == true ? null : () => _onRegister(e.id),
+                                                  child: Container(
+                                                      padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 12.w),
+                                                    decoration:BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(16),
+                                                      color: Colors.grey,
+                                                    ),
+                                                      child: Text(_registered[e.id] == true ? 'Registered' : 'Register')),
                                                 ),
                                               ]),
                                               // TextButton(onPressed: () => setState(()=> _expanded[e.id] = !( _expanded[e.id] ?? false)), child: Text(expanded ? 'See less' : 'See more')),
-                                              Text("See more"),
+                                              Text("See more", style: AppTextStyles.body(context),),
                                             ],
                                           )
                                         ],

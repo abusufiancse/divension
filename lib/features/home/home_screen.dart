@@ -20,7 +20,7 @@ import '../../widgets/responsive_book_widget.dart';
 import '../../widgets/section_header.dart';
 import '../../widgets/stat_chip.dart';
 import '../blogs_screen.dart';
-import '../books/divensions_megazine.dart' hide BookWidget;
+import '../books/divensions_megazine.dart';
 import '../events/event_screen.dart';
 import '../member_activity_gallery_screen.dart';
 import 'home_controller.dart';
@@ -245,7 +245,7 @@ class HomeScreen extends StatelessWidget {
             // ---------- Divention Names ----------
             SliverToBoxAdapter(
               child: SectionHeader(
-                title: 'Divention Names',
+                title: 'Divension Names',
                 onSeeAll: () => Navigator.pushNamed(context, '/divention-names'),
               ),
             ),

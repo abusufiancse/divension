@@ -133,14 +133,9 @@ class _DivensionMagazineState extends State<DivensionMagazine> {
         child: Column(
           children: [
             // Search bar
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
-                borderRadius: BorderRadius.circular(12.r),
-                boxShadow: [
-                  BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 2)),
-                ],
-              ),
+            Material(
+              color: Theme.of(context).cardColor,
+              borderRadius: BorderRadius.circular(12.r),
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
@@ -155,7 +150,7 @@ class _DivensionMagazineState extends State<DivensionMagazine> {
 
             // Year selector chips (tapping selects/unselects)
             SizedBox(
-              height: 36.h,
+              height: 40.h,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: sortedYears.length,
@@ -175,7 +170,7 @@ class _DivensionMagazineState extends State<DivensionMagazine> {
                     selectedColor: Colors.black,
                     backgroundColor: Theme.of(context).cardColor,
                     labelStyle: TextStyle(
-                      color: selected ? Colors.white : Colors.grey,
+                      color: selected ? Colors.white : Colors.black87,
                       fontWeight: FontWeight.w600,
                     ),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import '../../features/blogs_screen.dart';
+import '../../features/books/divensions_megazine.dart';
 import '../../features/club_memories_screen.dart';
 import '../../features/dashboard_screen.dart';
 import '../../features/divention_names_screen.dart';
@@ -44,7 +45,8 @@ class AppRoutes {
     // Content sections
     GetPage(
       name: RouteName.magazine,
-      page: () => const MagazineScreen(),
+      // page: () => const MagazineScreen(),
+      page: () => const DivensionMagazine(),
       transition: Transition.rightToLeftWithFade,
       curve: Curves.easeOutCubic,
       transitionDuration: const Duration(milliseconds: 350),
