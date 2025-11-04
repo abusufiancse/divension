@@ -21,7 +21,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   cached_network_image: ^3.4.1
   flutter_rating_bar: ^4.0.1
-  hugeicons: ^1.1.1
+  icons_plus: ^5.0.0
 
 dev_dependencies:
   flutter_test:

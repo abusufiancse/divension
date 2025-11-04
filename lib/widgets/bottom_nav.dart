@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:hugeicons/hugeicons.dart';
+import 'package:icons_plus/icons_plus.dart'; // <-- use icons_plus
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -22,7 +22,7 @@ class BottomNavBar extends StatelessWidget {
     final bg = theme.cardColor;                         // bar background
     final tabBg = cs.primary.withOpacity(isDark ? 0.22 : 0.18);
     final activeColor = cs.primary;                     // text/icon when active
-    final iconTextActive = cs.onPrimary;                // text/icon on filled tab (for older GNav)
+    final iconTextActive = cs.onPrimary;                // text/icon on filled tab (older GNavs)
     final inactiveColor = theme.hintColor;              // when inactive
     final ripple = cs.primary.withOpacity(0.08);
     final hover = cs.primary.withOpacity(0.06);
@@ -37,7 +37,6 @@ class BottomNavBar extends StatelessWidget {
         child: GNav(
           gap: 8,
           selectedIndex: currentIndex,
-          // for older/newer GNavs both are helpful:
           activeColor: iconTextActive,
           color: inactiveColor,
           iconSize: 22,
@@ -51,8 +50,8 @@ class BottomNavBar extends StatelessWidget {
           tabs: [
             GButton(
               icon: Icons.circle, // required param; visually replaced by leading
-              leading: HugeIcon(
-                icon: HugeIcons.strokeRoundedHome01,
+              leading: Icon(
+                IonIcons.home,
                 size: 22,
                 color: currentIndex == 0 ? activeColor : inactiveColor,
               ),
@@ -61,8 +60,8 @@ class BottomNavBar extends StatelessWidget {
             ),
             GButton(
               icon: Icons.circle,
-              leading: HugeIcon(
-                icon: HugeIcons.strokeRoundedAudioBook01,
+              leading: Icon(
+                IonIcons.book,
                 size: 22,
                 color: currentIndex == 1 ? activeColor : inactiveColor,
               ),
@@ -71,8 +70,8 @@ class BottomNavBar extends StatelessWidget {
             ),
             GButton(
               icon: Icons.circle,
-              leading: HugeIcon(
-                icon: HugeIcons.strokeRoundedActivity01,
+              leading: Icon(
+                IonIcons.pulse, // Activities vibe
                 size: 22,
                 color: currentIndex == 2 ? activeColor : inactiveColor,
               ),
@@ -81,8 +80,8 @@ class BottomNavBar extends StatelessWidget {
             ),
             GButton(
               icon: Icons.circle,
-              leading: HugeIcon(
-                icon: HugeIcons.strokeRoundedBlogger,
+              leading: Icon(
+                IonIcons.newspaper,
                 size: 22,
                 color: currentIndex == 3 ? activeColor : inactiveColor,
               ),

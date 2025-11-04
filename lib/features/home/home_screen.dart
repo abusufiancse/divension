@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 import '../../core/controllers/theme_controller.dart';
 // Other necessary imports
@@ -15,10 +16,11 @@ import '../../widgets/deshboard_header/PlanetaryLandingHeader.dart';
 import '../../widgets/deshboard_header/SpaceLaunchHeader.dart';
 import '../../widgets/drawer_widget.dart';
 import '../../widgets/glass_card.dart';
+import '../../widgets/responsive_book_widget.dart';
 import '../../widgets/section_header.dart';
 import '../../widgets/stat_chip.dart';
 import '../blogs_screen.dart';
-import '../books/books_view.dart';
+import '../books/divensions_megazine.dart';
 import '../member_activity_gallery_screen.dart';
 import 'home_controller.dart';
 
@@ -32,14 +34,14 @@ class HomeScreen extends StatelessWidget {
 
     // ---- Mock data (replace with API) ----
     final memories = [
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit:crop',
-      'https://images.unsplash.com/photo-1523978591478-c753949ff840?q=80&w=1200&auto=format&fit:crop',
-      'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit:crop',
+      'https://images.unsplash.com/photo-1728404059704-d4232080b338?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171',
+      'https://images.unsplash.com/photo-1622119029245-5bf43951115a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
+      'https://images.unsplash.com/photo-1738831651985-e242f111309d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
     ];
     final magazines = [
-      ('Quantum Edition', 'https://images.unsplash.com/photo-1520975661595-6453be3f7070?q=80&w=1400&auto=format&fit:crop'),
-      ('Climate Issue', 'https://images.unsplash.com/photo-1502303756782-5eeea00dcdc0?q=80&w=1400&auto=format&fit:crop'),
-      ('Neuro Focus', 'https://images.unsplash.com/photo-1559757175-08c9c3f5f2d7?q=80&w=1400&auto=format&fit:crop'),
+      ('Quantum Edition', 'https://images.unsplash.com/photo-1576864333216-51bbb4596b7e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170'),
+      ('Climate Issue', 'https://images.unsplash.com/photo-1582149369336-167033870d9f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170'),
+      ('Neuro Focus', 'https://images.unsplash.com/photo-1700421686935-5b0b2e2cc3f0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170'),
     ];
     final events = [
       ('Seminar: AI & Health', 'Oct 20, 2025 • Auditorium A', 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit:crop'),
@@ -100,12 +102,12 @@ class HomeScreen extends StatelessWidget {
               flexibleSpace: FlexibleSpaceBar(
                 // IMPORTANT: Set FlexibleSpaceBar.title to null
                 title: null,
-                // background: CosmicZoomHeader(),
+                 // background: SpaceLaunchHeader(),
+                background: CosmicZoomHeader(),
                 // background: PlanetaryLandingHeader(),
                 // background: DNAScienceHeader(),
-                //  background: SpaceLaunchHeader(),
                 //  background: PlanetaryLandingHeader(),// 2
-                 background: HistoryTimelineHeader(),// 2
+                //  background: HistoryTimelineHeader(),// 2
               ),
             ),
 
@@ -118,13 +120,13 @@ class HomeScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.symmetric(horizontal: 12.w),
                   children: [
-                    StatChip(icon: Icons.apartment_rounded, value: 'Divention', label: 'Club Name'),
+                    StatChip(icon: Bootstrap.activity, value: 'Divention', label: 'Club Name'),
                     SizedBox(width: 5.w),
-                    StatChip(icon: Icons.groups_rounded, value: '1,240', label: 'Total Members'),
+                    StatChip(icon: Bootstrap.people, value: '1,240', label: 'Total Members'),
                     SizedBox(width: 5.w),
-                    StatChip(icon: Icons.menu_book_rounded, value: '48', label: 'Science Magazines'),
+                    StatChip(icon: Bootstrap.book, value: '48', label: 'Science Magazines'),
                     SizedBox(width: 5.w),
-                    StatChip(icon: Icons.event_available_rounded, value: '23', label: 'Events'),
+                    StatChip(icon: Bootstrap.calendar_event, value: '23', label: 'Events'),
                   ],
                 ),
               ),
@@ -231,7 +233,7 @@ class HomeScreen extends StatelessWidget {
                         title,
                         style: AppTextStyles.body(context).copyWith(fontWeight: FontWeight.w900), // <--- Use AppTextStyles.body base
                       ),
-                      trailing: const Icon(Icons.arrow_forward_rounded),
+                      trailing: const Icon(Bootstrap.arrow_right),
                       onTap: () {},
                     ),
                   ),
@@ -261,7 +263,7 @@ class HomeScreen extends StatelessWidget {
                 final rowCount = (items.length / cols).ceil();
 
                 return SliverPadding(
-                  padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 24.h),
+                  padding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 8.w),
                   sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
                           (context, rowIndex) {
@@ -275,11 +277,13 @@ class HomeScreen extends StatelessWidget {
                             children: List.generate(cols, (i) {
                               final hasData = i < rowItems.length;
                               final card = hasData
-                                  ? _DiventionCard(
-                                name: rowItems[i]['name']!,
-                                imageUrl: rowItems[i]['img']!,
-                                onTap: () {},
-                              )
+                                  ?
+                              // _DiventionCard(
+                              //   name: rowItems[i]['name']!,
+                              //   imageUrl: rowItems[i]['img']!,
+                              //   onTap: () {},
+                              // )
+                              BookWidget(image: 'https://plus.unsplash.com/premium_vector-1736958202555-066746e464a2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687',)
                                   : const SizedBox.shrink();
 
                               return Expanded(
@@ -311,7 +315,7 @@ class HomeScreen extends StatelessWidget {
         // ),
       ),
       // ✅ Other tabs
-      const BooksView(),
+      const DivensionMagazine(),
       const MemberActivityGalleryScreen(),
       const BlogsScreen(),
     ];
@@ -384,7 +388,7 @@ class _MagazineHeroCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
       child: Stack(
         children: [
           ClipRRect(

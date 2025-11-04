@@ -1,5 +1,6 @@
 // src/widgets/stat_chip.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class StatChip extends StatelessWidget {
   final IconData icon;
   final String value;
@@ -8,14 +9,17 @@ class StatChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      margin:  EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+      padding:  EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: const Color(0xffdedede)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CircleAvatar(
             backgroundColor: const Color(0xffeef6ff),
@@ -24,7 +28,7 @@ class StatChip extends StatelessWidget {
               color: const Color(0xff2972ff),
             )),
           const SizedBox(width: 10),
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(value, style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 16)),
             Text(label, style: const TextStyle(color: Color(0xff6a7187))),
           ])

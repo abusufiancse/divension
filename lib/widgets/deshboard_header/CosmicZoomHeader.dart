@@ -115,30 +115,30 @@ class _CosmicZoomHeaderState extends State<CosmicZoomHeader>
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
-                              fontSize: 14.sp,
+                              fontSize: 12.sp,
                               letterSpacing: 2.0,
                               shadows: [
-                                const Shadow(
-                                  blurRadius: 20,
+                                 Shadow(
+                                  blurRadius: 20.r,
                                   color: Colors.black87,
                                   offset: Offset(0, 4),
                                 ),
                                 Shadow(
-                                  blurRadius: 40,
+                                  blurRadius: 40.r,
                                   color: Colors.blue.withOpacity(0.5),
                                   offset: const Offset(0, 0),
                                 ),
                               ],
                             ),
                           ),
-                          const SizedBox(height: 12),
+                          SizedBox(height: 8.h),
                           Text(
                             _getPhaseSubtitle(phase),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white.withOpacity(0.9),
                               fontWeight: FontWeight.w400,
-                              fontSize: 14.sp,
+                              fontSize: 10.sp,
                               letterSpacing: 1.2,
                               shadows: const [
                                 Shadow(

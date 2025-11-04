@@ -2,6 +2,7 @@
 import 'dart:math' as math;
 import 'dart:ui' show lerpDouble;
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// Animated journey through human history
 /// Ancient Egypt → Roman Empire → Medieval → Renaissance → Industrial → Digital Age
@@ -98,9 +99,9 @@ class _HistoryTimelineHeaderState extends State<HistoryTimelineHeader>
 
               // Timeline bar at bottom
               Positioned(
-                left: 20,
-                right: 20,
-                bottom: 20,
+                left: 20.w,
+                right: 20.w,
+                bottom: 5.h,
                 child: _TimelineBar(currentTime: t),
               ),
 

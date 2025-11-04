@@ -16,6 +16,11 @@ class AppTextStyles {
     fontFamily: 'Nunito',
     color: Theme.of(ctx).colorScheme.onSurface,
   );
+  static TextStyle h3(BuildContext ctx) => TextStyle(
+    fontSize: 16.sp, fontWeight: FontWeight.w700,
+    fontFamily: 'Nunito',
+    color: Theme.of(ctx).colorScheme.onSurface,
+  );
 
   static TextStyle body(BuildContext ctx) => TextStyle(
     fontSize: 14.sp,
